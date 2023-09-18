@@ -1,0 +1,108 @@
+/* fonts */
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto'),
+    url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto'),
+    url('../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto'),
+    url('../fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto'),
+    url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto'),
+    url('../fonts/Montserrat/Montserrat-ExtraBold.ttf') format('truetype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.2;
+  font-family: Montserrat, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}

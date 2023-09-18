@@ -1,0 +1,20 @@
+@use '../utils/variables';
+@use '../utils/palette';
+@use '../utils/mixins';
+
+.button {
+  @include mixins.flex-center;
+  @include mixins.px(1.5rem);
+  @include mixins.py(1rem);
+  @include mixins.radius(2rem);
+  background-color: palette.$c-orange-1;
+  border: variables.$b solid palette.$c-orange-2;
+  font-weight: 700;
+  color: palette.$c-white;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background-color: palette.$c-orange-2;
+  }
+}

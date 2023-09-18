@@ -1,0 +1,5 @@
+@use '../utils/palette';
+
+body {
+  background-color: palette.$c-green-2;
+}
