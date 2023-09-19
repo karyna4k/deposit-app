@@ -12,8 +12,7 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/utils/palette';
-@use '@/assets/scss/utils/mixins';
+@use '@/assets/scss/utils/index' as utils;
 .app {
   display: flex;
   flex-direction: column;
@@ -21,7 +20,7 @@
 }
 .view {
   flex: 1;
-  @include mixins.flex-center;
-  @include mixins.py(2rem);
+  @include utils.flex-center;
+  @include utils.py(2rem);
 }
 </style>
