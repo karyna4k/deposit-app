@@ -1,34 +1,34 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useRoute, useRouter } from 'vue-router';
-  import { useStore } from 'vuex';
-  import AppInput from '@/components/AppInput.vue';
-  import type { User } from '@/models';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import AppInput from '@/components/AppInput.vue';
+import type { User } from '@/models';
 
-  const router = useRouter();
-  const route = useRoute();
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
 
-  const store = useStore();
+const user = ref<User>({ username: '', password: '' });
+const errors = ref({ username: null, password: null, login: null })
 
-  const user = ref<User>({
-    username: '',
-    password: '',
-  });
+const login = async () => {
+  errors.value.username = user.value.username.trim() === "" ? "Username is required." : null;
+  errors.value.password = user.value.password.trim() === "" ? "Password is required." : null;
 
-  const login = async () => {
-    const success = await store.dispatch('authenticate', {
-      username: user.value.username,
-      password: user.value.password,
-    });
+  if (errors.value.login || errors.value.password) {
+    return;
+  }
 
-    if (success) {
-      console.log('Logged in!');
-      const redirectPath = route.query.redirect || '/deposit';
-      router.push(redirectPath);
-    } else {
-      console.log('Login failed!');
-    }
-  };
+  const isAuthenticated = await store.dispatch('authenticate', user.value);
+
+  if (isAuthenticated) {
+    const redirectPath = route.query.redirect || '/deposit';
+    router.push(redirectPath);
+  } else {
+    errors.value.login = 'Invalid username or password.';
+  }
+};
 </script>
 
 <template>
@@ -44,13 +44,26 @@
           autofocus
         >
           Username
+          <template #error>
+            {{ errors.username }}
+          </template>
         </app-input>
         <app-input
           id="password"
           v-model:model-value="user.password"
+          type="password"
         >
           Password
+          <template #error>
+            {{ errors.password }}
+          </template>
         </app-input>
+        <p
+          v-if="errors.login"
+          class="field-error"
+        >
+          {{ errors.login }}
+        </p>
         <button
           class="button"
           type="submit"
@@ -63,14 +76,13 @@
 </template>
 
 <style lang="scss" scoped>
-  @use '@/assets/scss/utils/variables';
-  @use '@/assets/scss/utils/mixins';
+  @use '@/assets/scss/utils/index' as utils;
   .login {
-    max-width: variables.$sm;
+    max-width: utils.$sm;
     width: 100%;
     margin: 0 auto;
     &-form {
-      @include mixins.flex-center;
+      @include utils.flex-center;
       flex-direction: column;
     }
   }
