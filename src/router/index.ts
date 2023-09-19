@@ -27,7 +27,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   if (to.meta.requiresAuth && !localStorage.getItem('user')) {
     return { name: 'login', query: { redirect: to.fullPath } };
   }

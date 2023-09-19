@@ -3,7 +3,9 @@
     <h1>Not Found</h1>
     <p>
       Ooops, we couldn't find that page. Try going
-      <router-link :to="{name: 'login'}">home</router-link>.
+      <router-link :to="{name: 'login'}">
+        home
+      </router-link>.
     </p>
   </div>
 </template>
