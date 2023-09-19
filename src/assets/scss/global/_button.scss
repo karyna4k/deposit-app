@@ -2,7 +2,7 @@
 
 .button {
   @include utils.flex-center;
-  @include utils.px(1.5rem);
+  @include utils.px(1.25rem);
   @include utils.py(1rem);
   @include utils.radius(2rem);
   background-color: utils.$c-orange-1;
