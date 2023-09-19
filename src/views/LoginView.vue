@@ -62,7 +62,7 @@ const login = async () => {
         </app-input>
         <p
           v-if="errors.login"
-          class="field-error"
+          class="field-error login-form-error"
         >
           {{ errors.login }}
         </p>
@@ -86,6 +86,9 @@ const login = async () => {
     &-form {
       @include utils.flex-center;
       flex-direction: column;
+      &-error {
+        margin-bottom: 1rem;
+      }
     }
   }
 </style>
