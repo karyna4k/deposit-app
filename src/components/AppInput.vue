@@ -11,13 +11,14 @@ withDefaults(defineProps<PropTypes>(), {
 });
 
 defineEmits(['update:modelValue']);
+
 </script>
 
 <template>
-  <div class="input-field">
+  <div class="field">
     <label
       :for="id"
-      class="input-field-label"
+      class="field-label"
     >
       <slot />
     </label>
@@ -26,10 +27,13 @@ defineEmits(['update:modelValue']);
       :name="id"
       :value="modelValue"
       :type="type"
-      class="input-field-input"
+      class="field-input"
       autocomplete="off"
       v-bind="$attrs"
       @input="$emit('update:modelValue', $event.target.value)"
     >
+    <p class="field-error">
+      <slot name="error" />
+    </p>
   </div>
 </template>
