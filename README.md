@@ -1,8 +1,9 @@
 # deposit-app
 
-###Mock User
+### Mock User
 
 username: `admin`
+
 password: `password123`
 
 ## Recommended IDE Setup
