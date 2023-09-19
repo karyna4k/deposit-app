@@ -13,6 +13,8 @@ const user = ref<User>({ username: '', password: '' });
 const errors = ref({ username: null, password: null, login: null })
 
 const login = async () => {
+  errors.value.login = null
+
   errors.value.username = user.value.username.trim() === "" ? "Username is required." : null;
   errors.value.password = user.value.password.trim() === "" ? "Password is required." : null;
 
