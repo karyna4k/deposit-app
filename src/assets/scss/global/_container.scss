@@ -1,0 +1,26 @@
+@use '../utils/index' as utils;
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  @include utils.px(1rem);
+  @media (min-width: utils.$sm) {
+    max-width: 640px;
+    @include utils.px(2rem);
+  }
+  @media (min-width: utils.$md) {
+    max-width: 768px;
+  }
+  @media (min-width: utils.$lg) {
+    max-width: 1024px;
+    @include utils.px(4rem);
+  }
+  @media (min-width: utils.$xl) {
+    max-width: 1280px;
+    @include utils.px(5rem);
+  }
+  @media (min-width: utils.$xl2) {
+    max-width: 1536px;
+    @include utils.px(6rem);
+  }
+}

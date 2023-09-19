@@ -1,3 +1,5 @@
+@use './palette';
+
 // text
 $t-xs: 0.75rem; // 12px
 $t-sm: 0.875rem; // 14px
@@ -14,6 +16,8 @@ $b-sm: 0.25rem;
 $b-md: 0.5rem;
 $b-lg: 0.75rem;
 $b-xl: 1rem;
+
+$b-input: $b solid palette.$c-green-1;
 
 // breakpoints
 $sm: 640px;

@@ -1,16 +1,15 @@
-@use '@/assets/scss/utils/palette';
-@use '@/assets/scss/utils/variables';
-@use '@/assets/scss/utils/mixins';
+@use '../utils/index' as utils;
 
 .nav {
-  @include mixins.py(1rem);
+  @include utils.py(1rem);
+  background-color: utils.$c-green-3;
   &-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   &-logo {
-    max-width: 4.5rem;
+    max-width: 2.5rem;
     img {
       width: 100%;
     }

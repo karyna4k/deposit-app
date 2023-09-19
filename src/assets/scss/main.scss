@@ -1,28 +1,3 @@
-@use './utils/mixins';
-@use './utils/variables';
-@forward './global';
+@use './utils/index' as *;
+@use './global/index' as *;
 
-.container {
-  width: 100%;
-  margin: 0 auto;
-  @include mixins.px(1rem);
-  @media (min-width: variables.$sm) {
-    max-width: 640px;
-    @include mixins.px(2rem);
-  }
-  @media (min-width: variables.$md) {
-    max-width: 768px;
-  }
-  @media (min-width: variables.$lg) {
-    max-width: 1024px;
-    @include mixins.px(4rem);
-  }
-  @media (min-width: variables.$xl) {
-    max-width: 1280px;
-    @include mixins.px(5rem);
-  }
-  @media (min-width: variables.$xl2) {
-    max-width: 1536px;
-    @include mixins.px(6rem);
-  }
-}

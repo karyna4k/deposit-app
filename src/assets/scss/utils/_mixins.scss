@@ -163,21 +163,17 @@
   $h-sm: 2.25rem;
   $h-md: $control-height;
   $h-lg: 3.75rem;
-  // 40px height
   @include capsule($h-md);
   @apply tw-py-2 tw-px-3;
   &.xs {
-    // 32px height
     @include capsule($h-xs);
     @apply tw-text-xs tw-py-1 tw-px-2;
   }
   &.sm {
-    // 36px height
     @include capsule($h-sm);
     @apply tw-text-sm tw-py-1 tw-px-2.5;
   }
   &.lg {
-    // 60px height
     @include capsule($h-lg);
     @apply tw-text-lg tw-py-2 tw-px-3;
   }

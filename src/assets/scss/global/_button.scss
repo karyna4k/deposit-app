@@ -1,20 +1,18 @@
-@use '../utils/variables';
-@use '../utils/palette';
-@use '../utils/mixins';
+@use '../utils/index' as utils;
 
 .button {
-  @include mixins.flex-center;
-  @include mixins.px(1.5rem);
-  @include mixins.py(1rem);
-  @include mixins.radius(2rem);
-  background-color: palette.$c-orange-1;
-  border: variables.$b solid palette.$c-orange-2;
+  @include utils.flex-center;
+  @include utils.px(1.5rem);
+  @include utils.py(1rem);
+  @include utils.radius(2rem);
+  background-color: utils.$c-orange-1;
+  border: utils.$b solid utils.$c-orange-2;
   font-weight: 700;
-  color: palette.$c-white;
+  color: utils.$c-white;
   outline: none;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   &:hover {
-    background-color: palette.$c-orange-2;
+    background-color: utils.$c-orange-2;
   }
 }
