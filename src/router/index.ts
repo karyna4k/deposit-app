@@ -27,10 +27,10 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from) => {
-//   if (to.meta.requiresAuth && !localStorage.getItem('user')) {
-//     return { name: 'login', query: { redirect: to.fullPath } };
-//   }
-// });
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth && !localStorage.getItem('user')) {
+    return { name: 'login', query: { redirect: to.fullPath } };
+  }
+});
 
 export default router;
