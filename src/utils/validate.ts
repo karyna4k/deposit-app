@@ -1,10 +1,6 @@
-import { cardPatterns, CardType } from '@/models';
-
-export const determineCardType = (number: string): CardType => {
-  for (const card of cardPatterns) {
-    if (card.pattern.test(number)) return card.type;
-  }
-  return CardType.UNKNOWN;
+export const determineCardType = (number: string): boolean => {
+  const regex = /^[0-9]{16}$/;
+  return regex.test(number.trim());
 };
 
 export const validateCardHolderName = (name: string): boolean => {
@@ -12,14 +8,23 @@ export const validateCardHolderName = (name: string): boolean => {
   return regex.test(name.trim());
 };
 
-export const validateExpiryDate = (month: string, year: string): boolean => {
+export const validateExpiryMonth = (month: string, year: string): boolean => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
 
   const inputYear = parseInt(year);
   const inputMonth = parseInt(month);
 
-  return inputYear > currentYear || (inputYear === currentYear && inputMonth >= currentMonth);
+  if (inputYear === currentYear) {
+    return inputMonth >= currentMonth;
+  }
+  return true;
+};
+
+export const validateExpiryYear = (year: string): boolean => {
+  const currentYear = new Date().getFullYear();
+
+  return parseInt(year) >= currentYear;
 };
 
 export const validateCVV = (cvv: string): boolean => {
