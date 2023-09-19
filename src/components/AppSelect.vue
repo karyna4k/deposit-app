@@ -1,3 +1,21 @@
+<script setup lang="ts">
+type Option = {
+  label: string,
+  value: string
+}
+
+type PropTypes = {
+  id: string;
+  options: Option[];
+  defaultOption: string;
+  modelValue: string;
+  labelName?: string;
+};
+
+defineProps<PropTypes>()
+defineEmits(['update:modelValue']);
+</script>
+
 <template>
   <div class="field">
     <label
@@ -27,27 +45,13 @@
         {{ option.value }}
       </option>
     </select>
-    <p class="field-error">
+    <p
+      class="field-error"
+    >
       <slot name="error" />
     </p>
   </div>
 </template>
 
-<script setup lang="ts">
-type Option = {
-  label: string,
-  value: string
-}
 
-type PropTypes = {
-  id: string;
-  options: Option[];
-  defaultOption: string;
-  modelValue: string;
-  labelName?: string;
-};
-
-defineProps<PropTypes>();
-defineEmits(['update:modelValue']);
-</script>
 
