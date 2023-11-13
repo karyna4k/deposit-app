@@ -1,6 +1,6 @@
 export const determineCardType = (number: string): boolean => {
   const regex = /^[0-9]{16}$/;
-  return regex.test(number.trim());
+  return regex.test(number.replace(/\s/g, ''));
 };
 
 export const validateCardHolderName = (name: string): boolean => {
