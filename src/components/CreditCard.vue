@@ -9,7 +9,7 @@ type PropsType = {
   expireYear: string,
   cvv: string,
   name: string,
-  showBack: string,
+  showBack: boolean,
   symbolImage: string
 }
 
