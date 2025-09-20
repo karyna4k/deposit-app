@@ -10,7 +10,7 @@ const route = useRoute();
 const store = useStore();
 
 const user = ref<User>({ username: '', password: '' });
-const errors = ref({ username: null, password: null, login: null })
+const errors = ref<{ username: string | null; password: string | null; login: string | null }>({ username: null, password: null, login: null })
 
 const login = async () => {
   errors.value.login = null
@@ -22,11 +22,12 @@ const login = async () => {
     return;
   }
 
-  const isAuthenticated = await store.dispatch('authenticate', user.value);
+  const isAuthenticated: boolean = await store.dispatch('authenticate', user.value);
 
   if (isAuthenticated) {
-    const redirectPath = route.query.redirect || '/deposit';
-    router.push(redirectPath);
+    const redirectParam = route.query.redirect;
+    const redirectPath = Array.isArray(redirectParam) ? redirectParam[0] : redirectParam;
+    router.push(redirectPath ?? '/deposit');
   } else {
     errors.value.login = 'Invalid username or password.';
   }

@@ -5,7 +5,7 @@ interface State {
   isAuthenticated: boolean;
 }
 
-const store = createStore({
+const store = createStore<State>({
   state: {
     isAuthenticated: false,
   },
@@ -19,7 +19,7 @@ const store = createStore({
   },
   actions: {
     async authenticate(
-      { commit },
+      { commit }: { commit: (type: 'setAuthenticated', payload: boolean) => void },
       { username, password }: { username: string; password: string }
     ) {
       try {
@@ -30,9 +30,10 @@ const store = createStore({
         return false;
       }
     },
-    logout({ commit }) {
+    logout({ commit }: { commit: (type: 'logout') => void }) {
       logout();
       commit('logout');
+      return true;
     },
   },
 });

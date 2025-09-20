@@ -13,7 +13,15 @@ type PropTypes = {
 };
 
 defineProps<PropTypes>()
-defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void;
+}>();
+
+const onChange = (event: Event) => {
+  const target = event.target as HTMLSelectElement | null;
+  if (!target) return;
+  emit('update:modelValue', target.value);
+}
 </script>
 
 <template>
@@ -28,7 +36,7 @@ defineEmits(['update:modelValue']);
       :name="id"
       class="field-input select"
       :value="modelValue"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="onChange"
     >
       <option
         value=""

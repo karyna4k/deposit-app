@@ -7,6 +7,11 @@ import {
   validateExpiryYear,
 } from '@/utils';
 
+type FieldValidator = {
+  validate: (value: string, additionalValue?: string) => boolean;
+  message: string;
+};
+
 export const useValidation = () => {
   const errors = reactive({
     cardNumber: '',
@@ -16,7 +21,7 @@ export const useValidation = () => {
     cvv: '',
   });
 
-  const validators = {
+  const validators: Record<keyof typeof errors, FieldValidator> = {
     cardNumber: {
       validate: (value: string) => determineCardType(value),
       message: 'Invalid card number',
@@ -26,8 +31,8 @@ export const useValidation = () => {
       message: 'Invalid card owner name',
     },
     expiryMonth: {
-      validate: (value: string, year: string) =>
-        validateExpiryMonth(value, year),
+      validate: (value: string, year?: string) =>
+        validateExpiryMonth(value, year ?? ''),
       message: 'Invalid expiry month',
     },
     expiryYear: {

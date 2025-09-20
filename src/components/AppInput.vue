@@ -10,7 +10,15 @@ withDefaults(defineProps<PropTypes>(), {
   placeholder: ''
 });
 
-defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | number): void;
+}>();
+
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement | null;
+  if (!target) return;
+  emit('update:modelValue', target.value);
+};
 
 </script>
 
@@ -30,7 +38,7 @@ defineEmits(['update:modelValue']);
       class="field-input"
       autocomplete="off"
       v-bind="$attrs"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="onInput"
     >
     <p class="field-error">
       <slot name="error" />

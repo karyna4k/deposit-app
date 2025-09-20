@@ -9,8 +9,8 @@ const store = useStore();
 
 const showLogout = computed(() => route.name !== 'login');
 
-const logout = () => {
-  const success = store.dispatch('logout');
+const logout = async () => {
+  const success = await store.dispatch('logout');
 
   if (success) {
     console.log('Logged out!');
