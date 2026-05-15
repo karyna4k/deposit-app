@@ -26,7 +26,7 @@ const store = createStore<State>({
         const result = await authenticate(username, password);
         commit('setAuthenticated', result);
         return true;
-      } catch (error) {
+      } catch {
         return false;
       }
     },
